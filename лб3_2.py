@@ -1,14 +1,14 @@
-class Person:#создание базового класса человек 
-    def __init__(self, name: str, age: int):#конструктор класса: параметр имени, парметр возраста 
+class Person:#создание ьазового класса человека  
+    def __init__(self, name: str, age: int): 
         """Базовый класс для представления человека."""
-        self.name = name#сохранение имени в атребуте объект 
-        self.age = age#сохранение возраста в атребуте объект
+        self.name = name
+        self.age = age
 
-    def __str__(self):#метод для строкового представления объекта 
-        return f"{self.name}, {self.age} лет"#возвращает формативную строку с именем и возрастом 
+    def __str__(self):
+        return f"{self.name}, {self.age} лет" 
 
 
-class Teacher(Person):#создание дочернего класса Teacher 
+class Teacher(Person):
     def __init__(self, name: str, age: int, subject: str):#конструктор класса teacher с дополнительным параметром subject 
         """Дочерний класс для представления преподавателя.
 
@@ -17,9 +17,9 @@ class Teacher(Person):#создание дочернего класса Teacher
             age (int): Возраст
             subject (str): Преподаваемый предмет
         """
-        super().__init__(name, age)  # вызов конструктора родительского класса 
-        self.subject = subject #сохранения предмета преподования 
-        self.students = []  # Список для хранения студентов
+        super().__init__(name, age)  
+        self.subject = subject 
+        self.students = []  
 
     def add_student(self, student: 'Student') -> bool: #метод добавления студента 
         """Добавляет студента в список.
@@ -30,14 +30,14 @@ class Teacher(Person):#создание дочернего класса Teacher
         Returns:
             bool: True если студент добавлен, False если уже существует 
         """
-        if student in self.students: # проверка есть ли студент уже в списке 
-            print(f"Ошибка: студент {student.name} уже есть в списке.") # вывод сообщения об ошибке если студент уже существует 
-            return False #операция не выполнена 
-        self.students.append(student) #добавления студента в список 
-        print(f"Студент {student.name} добавлен к преподавателю {self.name}.") # вывод сообщения об успешном добавлении 
-        return True#опрация выполнена 
+        if student in self.students: 
+            print(f"Ошибка: студент {student.name} уже есть в списке.")  
+            return False 
+        self.students.append(student) 
+        print(f"Студент {student.name} добавлен к преподавателю {self.name}.") 
+        return True
 
-    def remove_student(self, student_id: str) -> bool:# метод удаления студента по id 
+    def remove_student(self, student_id: str) -> bool:
         """Удаляет студента по ID.
 
         Args:
@@ -46,23 +46,23 @@ class Teacher(Person):#создание дочернего класса Teacher
         Returns:
             bool: True если студент удален, False если не найден
         """
-        for student in self.students: # цикл по всем студентам в списке 
-            if student.student_id == student_id: # проверка совпадает ли id студента с исковым 
-                self.students.remove(student)#удаление студента из списка 
-                print(f"Студент {student.name} удален.")#вывод об успешно удалений 
-                return True #студент найден и удален 
-        print(f"Студент с ID {student_id} не найден.") #вывод сообщения если студент не найден 
+        for student in self.students: 
+            if student.student_id == student_id: 
+                self.students.remove(student)
+                print(f"Студент {student.name} удален.")
+                return True 
+        print(f"Студент с ID {student_id} не найден.") 
         return False #студент не найден 
 
     def list_students(self): #метод вывода списка из всех студентов 
         """Выводит список всех студентов."""
-        print(f"\nСписок студентов преподавателя {self.name} ({self.subject}):") #заголовок списка с именем преподователя и предметом 
-        if not self.students:#проверка пуст ли список студентов 
+        print(f"\nСписок студентов преподавателя {self.name} ({self.subject}):") 
+        if not self.students:
             print("Нет студентов")
             return
 
-        for i, student in enumerate(self.students, 1): #цикл по студентом с нумерацией 
-            print(f"{i}. {student.name} (ID: {student.student_id}), средний балл: {student.get_average():.2f}")# вывод информаций о каждом студенте 
+        for i, student in enumerate(self.students, 1):
+            print(f"{i}. {student.name} (ID: {student.student_id}), средний балл: {student.get_average():.2f}")
 
 
 # Пример использования
@@ -95,3 +95,4 @@ if __name__ == "__main__":
     # Выводим обновленный список
 
     math_teacher.list_students()
+
