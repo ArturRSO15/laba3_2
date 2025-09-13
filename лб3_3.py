@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod#импорт модуля для работ�
 import math#импорт математического модуля для использования константы пи и функций sqrt
 
 
-class Shape(ABC):#объявление абстрактного класса shape
-    @abstractmethod#декоратор для объявления абстрактного метода 
+class Shape(ABC):
+    @abstractmethod
     def area(self): pass#абстрактный метод area()
 
     @abstractmethod
@@ -47,4 +47,5 @@ shapes = [Rectangle(4, 5), Circle(3), Triangle(3, 4, 5)]
 for shape in shapes:
 
     print(f"{type(shape).__name__}: Area = {shape.area():.2f}, Perimeter = {shape.perimeter():.2f}")
+
 
